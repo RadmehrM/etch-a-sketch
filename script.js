@@ -10,13 +10,11 @@ for (i = 0; i < gridSize; i++) {
 
     box.className = "gridbox";
 
-    box.style.border= "black solid 1px";
+    box.style.width = 400/(Math.sqrt(gridSize)) + "px";
 
-    box.style.width = "20px";
+    box.style.height = 400/(Math.sqrt(gridSize)) + "px";
 
-    box.style.height = "20px";
-
-    box.style.float = "left";
+    box.style.outline = "solid 1px";
 
     box.style.margin = "0";
 

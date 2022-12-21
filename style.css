@@ -9,7 +9,7 @@ body {
     position: absolute;
     top: 300px;
     flex-wrap: wrap;
-    height: 352px;
-    width: 352px;
-    border: solid black 1px;
+    height: 400px;
+    width: 400px;
+    border: solid black 2px;
 }
