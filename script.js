@@ -2,25 +2,48 @@
 
 const container = document.querySelector(".container");
 
-const gridSize = 256;
+const gridSize = 16;
 
-for (i = 0; i < gridSize; i++) {
+function gridCreator(gridSize) {
 
-    let box = document.createElement("div");
+    gridSize = gridSize**2;
 
-    box.className = "gridbox";
+    for (i = 0; i < gridSize; i++) {
 
-    box.style.width = 400/(Math.sqrt(gridSize)) + "px";
+        let box = document.createElement("div");
 
-    box.style.height = 400/(Math.sqrt(gridSize)) + "px";
+        box.className = "gridbox";
 
-    box.style.outline = "solid 1px";
+        box.style.width = 400/(Math.sqrt(gridSize)) + "px";
 
-    box.style.margin = "0";
+        box.style.height = 400/(Math.sqrt(gridSize)) + "px";
 
-    box.style.pardding = "0";
+        box.style.outline = "solid 1px";
 
-    container.append(box);
+        box.style.margin = "0";
+
+        box.style.pardding = "0";
+
+        container.append(box);
+
+    }
 
 }
+
+
+
+function changeColor(color) {
+    const grids = document.querySelectorAll(".gridbox");
+    grids.forEach(grid => {
+        grid.addEventListener("mouseover", () => {grid.style.backgroundColor = color});
+    });
+
+}
+
+
+
+gridCreator(gridSize);
+changeColor("black");
+
+
 
