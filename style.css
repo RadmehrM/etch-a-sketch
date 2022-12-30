@@ -1,15 +1,51 @@
-body {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
+
 
 .container {
     display: flex;
-    position: absolute;
-    top: 300px;
     flex-wrap: wrap;
     height: 400px;
     width: 400px;
     border: solid black 2px;
 }
+
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.every {
+    height: 98vh;
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#colorPicker {
+    border: 1px;
+    width: 30px;
+    height: 30px;
+}
+
+#color {
+    display: flex;
+    align-items: center;
+    gap: 5px
+}
+
+.slider {
+width: 300px; /* Full-width */
+height: 25px; /* Specified height */
+}
+.slidecontainer {
+    margin: -10px;
+}
+
+p {
+    margin: 0;
+}
+

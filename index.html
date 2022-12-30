@@ -6,10 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Etch-a-Sketch</title>
 </head>
-<body>
-    <div class="container"></div>
+<body onload=" setColor('black')">
+    <div class="every">
+        <div class="buttons">
+        <button id="color">Draw <input type="color" id="colorPicker" name="colorPicker"></button>
+        <button id="erase">Eraser</button>
+        <button id="clear">Clear</button>
+        </div>
+        <div class="container"></div>
+        <p>Change Pixel Size</p>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
+        </div>
+        <div id="output"></div>
+    </div>
+    
+
+    
+
+    
 </body>
 </html>

@@ -2,7 +2,6 @@
 
 const container = document.querySelector(".container");
 
-const gridSize = 16;
 
 function gridCreator(gridSize) {
 
@@ -18,8 +17,6 @@ function gridCreator(gridSize) {
 
         box.style.height = 400/(Math.sqrt(gridSize)) + "px";
 
-        box.style.outline = "solid 1px";
-
         box.style.margin = "0";
 
         box.style.pardding = "0";
@@ -31,8 +28,7 @@ function gridCreator(gridSize) {
 }
 
 
-
-function changeColor(color) {
+function setColor(color) {
     const grids = document.querySelectorAll(".gridbox");
     grids.forEach(grid => {
         grid.addEventListener("mouseover", () => {grid.style.backgroundColor = color});
@@ -40,10 +36,40 @@ function changeColor(color) {
 
 }
 
+gridCreator(gridSize)
+
+let colorPicker = document.querySelector("#colorPicker");
+colorPicker.addEventListener('input', () => {
+    setColor(colorPicker.value);
+})
 
 
-gridCreator(gridSize);
-changeColor("black");
+const erase = document.querySelector("#erase");
+erase.addEventListener("click", () => {setColor("white")});
+
+const clear = document.querySelector('#clear');
+clear.addEventListener("click", ()=> {
+    const grids = document.querySelectorAll(".gridbox");
+    grids.forEach(grid => { grid.style.backgroundColor = "white"});
+    });
+
+const color = document.querySelector('#color');
+color.addEventListener("click", () => {setColor(colorPicker.value)});
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerText = slider.value + " x " + slider.value;
+
+function pixelSize() {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.remove());
+    gridCreator(slider.value);
+}
+
+slider.addEventListener("input", ()=> {
+  output.innerText = slider.value + " x " + slider.value;
+  pixelSize();
+});
 
 
 
