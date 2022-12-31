@@ -4,6 +4,9 @@ const container = document.querySelector(".container");
 
 const gridSize = 16;
 
+let isRainbow = false;
+
+let isGrey = false;
 
 function gridCreator(gridSize) {
 
@@ -29,9 +32,11 @@ function gridCreator(gridSize) {
 
 }
 
-
+const rainbow = document.querySelector("#rainbow");
 
 function setColor(color) {
+    isRainbow = false;
+    isGrey = false;
     const grids = container.querySelectorAll("div");
     grids.forEach(grid => {
         grid.addEventListener("mouseover", () => {grid.style.backgroundColor = color});
@@ -54,7 +59,13 @@ const clear = document.querySelector('#clear');
 clear.addEventListener("click", ()=> {
     const grids = document.querySelectorAll(".gridbox");
     grids.forEach(grid => { grid.style.backgroundColor = "white"});
+    if (isRainbow == false && isGrey == false) {
     setColor(colorPicker.value);
+    } else if(isRainbow==true) {
+        rainbowEffect();
+    } else if(isGrey == true) {
+        greyScaleEffect();
+    }
     });
 
 const color = document.querySelector('#color');
@@ -77,10 +88,40 @@ slider.addEventListener("input", ()=> {
 });
 
 
-const rainbow = document.querySelector("#rainbow");
 
 
+function rainbowEffect() {
+    const grids = container.querySelectorAll("div");
+    grids.forEach(grid => {
+        let r = Math.floor(Math.random()*256);
+        let g = Math.floor(Math.random()*256);
+        let b = Math.floor(Math.random()*256);
+        grid.addEventListener("mouseover", () => {grid.style.backgroundColor = `rgb(${r}, ${g}, ${b})`})})
+    }
+
+rainbow.addEventListener("click", () => {
+    rainbowEffect();
+    isRainbow = true;
+    isGrey = false;
+});
+
+function greyScaleEffect() {
+    const grids = container.querySelectorAll("div");
+    grids.forEach(grid => {
+        const greys = ["rgb(100,100,100)", "rgb(0,0,0)","rgb(130,130,130)","rgb(150,150,150)","rgb(160,160,160)", "rgb(210,210,210)", "rgb(225,225,225)"];
+        grid.addEventListener("mouseover", () => {grid.style.backgroundColor = greys[Math.floor(Math.random()*greys.length)]})
+        })
+    }
+
+const greyScale = document.querySelector('#grey');
+greyScale.addEventListener("click", ()=> {
+    greyScaleEffect();
+    isGrey = true;
+    isRainbow = false
+})
+    
 
 
+    
 
 
