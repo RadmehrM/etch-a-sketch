@@ -33,13 +33,15 @@ function gridCreator(gridSize) {
 }
 
 const rainbow = document.querySelector("#rainbow");
+const color = document.querySelector('#color');
 
-function setColor(color) {
+function setColor(COLOR) {
     isRainbow = false;
     isGrey = false;
+    color.classList.add("clicked");
     const grids = container.querySelectorAll("div");
     grids.forEach(grid => {
-        grid.addEventListener("mouseover", () => {grid.style.backgroundColor = color});
+        grid.addEventListener("mouseover", () => {grid.style.backgroundColor = COLOR});
     });
 
 }
@@ -53,7 +55,12 @@ colorPicker.addEventListener('input', () => {
 
 
 const erase = document.querySelector("#erase");
-erase.addEventListener("click", () => {setColor("white")});
+erase.addEventListener("click", () => {setColor("white")
+    erase.classList.add("clicked");
+    rainbow.classList.remove("clicked");
+    greyScale.classList.remove("clicked");
+    color.classList.remove("clicked");
+});
 
 const clear = document.querySelector('#clear');
 clear.addEventListener("click", ()=> {
@@ -68,11 +75,15 @@ clear.addEventListener("click", ()=> {
     }
     });
 
-const color = document.querySelector('#color');
-color.addEventListener("click", () => {setColor(colorPicker.value)});
+color.addEventListener("click", () => {setColor(colorPicker.value)
+    color.classList.add("clicked");
+    rainbow.classList.remove("clicked");
+    greyScale.classList.remove("clicked");
+    erase.classList.remove("clicked");
+});
 
-const slider = document.getElementById("myRange");
-const output = document.getElementById("demo");
+const slider = document.querySelector("#myRange");
+const output = document.querySelector("#demo");
 output.innerText = slider.value + " x " + slider.value;
 
 function pixelChange() {
@@ -84,7 +95,17 @@ function pixelChange() {
 slider.addEventListener("input", ()=> {
   output.innerText = slider.value + " x " + slider.value;
   pixelChange();
-  setColor(colorPicker.value)
+  if (isRainbow == false && isGrey == false) {
+    setColor(colorPicker.value);
+    color.classList.add("clicked")
+    } else if(isRainbow==true) {
+        rainbowEffect();
+        rainbow.classList.add("clicked")
+    } else if(isGrey == true) {
+        greyScaleEffect();
+        greyScale.classList.add("clicked")
+    }
+    erase.classList.remove("clicked");
 });
 
 
@@ -101,6 +122,10 @@ function rainbowEffect() {
 
 rainbow.addEventListener("click", () => {
     rainbowEffect();
+    rainbow.classList.add("clicked");
+    greyScale.classList.remove("clicked");
+    color.classList.remove("clicked");
+    erase.classList.remove("clicked");
     isRainbow = true;
     isGrey = false;
 });
@@ -117,7 +142,11 @@ const greyScale = document.querySelector('#grey');
 greyScale.addEventListener("click", ()=> {
     greyScaleEffect();
     isGrey = true;
-    isRainbow = false
+    isRainbow = false;
+    greyScale.classList.add("clicked");
+    rainbow.classList.remove("clicked");
+    color.classList.remove("clicked");
+    erase.classList.remove("clicked");
 })
     
 
