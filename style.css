@@ -96,3 +96,10 @@ p, #demo {
     color: white;
 }
 
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    color: white;
+}
+
