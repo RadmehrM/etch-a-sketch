@@ -5,4 +5,4 @@ Works similarly to the actual toy, just select an option and you can draw on the
 
 Live Preview: 
 
-https://radmehrm.github.io
+https://radmehrm.github.io/Etch_a_Sketch/
