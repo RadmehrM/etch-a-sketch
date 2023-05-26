@@ -3,15 +3,14 @@
 body, button {
     font-family: 'Balsamiq Sans', sans-serif;
     font-weight: normal;
-    background-color: darkmagenta;
+    background-color: blueviolet;
 
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    height: 500px;
-    width: 500px;
+    max-width: 500px;;
     border: solid pink 10px;
     background-color: white;
 }
@@ -41,8 +40,9 @@ button {
 .clicked {
     box-shadow: 0 0 5px 3px white;
 }
+
 .every {
-    height: 90vh;
+    
     width: 100%;
     gap: 10px;
     display: flex;
@@ -103,3 +103,22 @@ p, #demo {
     color: white;
 }
 
+@media (max-width: 768px) {
+    .container {
+      max-width: 90%;
+    }
+  
+    button {
+      width: 30%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      max-width: 90%;
+    }
+  
+    button {
+      width: 90%;
+    }
+  }
